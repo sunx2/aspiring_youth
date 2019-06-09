@@ -5,10 +5,14 @@ This is a project for making a website which will contain our work and will work
 
 - Framework
     - React
-    - express
-    - database ( undecided )
+    - Django
+    - Postgres
+    - Django-rest
     
 
 - Works
-    - code learner ( main server designer )
-    - others ( undecided , post in issues to take a work )
+    - Kueen, firefeathers ( server devs )
+    - Sun , Uday ( database management )
+    - firefeathers , code learner ( publish on glitch )
+    - shreyash ( be pretty )
+    - others ( front end and backend develope )
