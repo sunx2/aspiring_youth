@@ -77,13 +77,25 @@ WSGI_APPLICATION = 'aspiring_youth.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+#changing SQLITE to postgres
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dbmdajr80g804p',
+        'USER': 'lmwrfpunzrxncf',
+        'PASSWORD': '0a97b09d556dd00809138aebe26fd09ef3de7d5bfc9b1d3f406b85ca847618ca',
+        'HOST': 'ec2-54-247-70-127.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
