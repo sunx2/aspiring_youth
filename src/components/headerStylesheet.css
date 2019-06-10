@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+
+.default{
+    background-color: #233D4D;
+    padding: 7px;
+}
+
+.textStyle{
+    font-size: 30px;
+    display:inline;
+    font-family: 'Righteous', cursive;
+    margin: 10px;
+}
+
+.textcolorone{
+    color: #FFAA00;
+}
+
+.textcolortwo{
+    color: #EB2A2E;
+}
