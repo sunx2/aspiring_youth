@@ -86,6 +86,8 @@ DATABASES = {
     }
 }
 '''
+
+# DON'T CHANGE THESE, BY SUN OTHERWISE APP WILL FAIL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
