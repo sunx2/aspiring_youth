@@ -24,11 +24,11 @@ const isAuthenticated = () => {
     }
 }
 
-const Auth = {
+const UserAuth = {
     login,
     getUser,
     logout,
     isAuthenticated
 }
 
-export default Auth;
+export default UserAuth;

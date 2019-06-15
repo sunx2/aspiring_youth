@@ -2,7 +2,8 @@ import React from 'react';
 import {withRouter} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ErrorMessage from '../components/ErrorMessage';
-import Auth from '../util/auth';
+import UserAuth from '../util/UserAuth';
+import AuthApi from '../util/network';
 
 class Login extends React.Component {
 
@@ -19,10 +20,10 @@ class Login extends React.Component {
 	}
 
 	login = async () => {
-		console.log(`${this.state.email} : ${this.state.password}`)
-		Auth.login({})
-		this.props.history.push('/dashboard');
 		/*
+		UserAuth.login({})
+		this.props.history.push('/dashboard');
+		
 		const url = this.base + '/api/auth/authenticate'
 		const data = {
 			email: this.state.email,
@@ -47,29 +48,14 @@ class Login extends React.Component {
 	}
 
 	register = async () => {
-		console.log(`${this.state.email} : ${this.state.password}  : ${this.state.name}`)
-		/*
-		const url = this.base + '/api/auth/register'
-		const data = {
-			email: this.state.email,
-			password: this.state.password,
-			name:this.state.name,
-			type:this.state.userType
-		}
-		const resp = await fetch(url, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data),
-		})
-		const json = await resp.json()
-		console.log(json)
-		if(resp.status !== 200) {
-			this.setState({errMsg:json.message})
-		} else {
+		const result = await AuthApi.register(this.state.name, this.state.email, this.state.password);
+		console.log(result)
+		if(result.Success !== 'False') {
+			this.setState({errMsg:''})
 			this.login()
-		}*/
+		} else {
+			if(result.Message) 	this.setState({errMsg:result.Message})
+		}
 	}
 
 	showLogin = () => {
