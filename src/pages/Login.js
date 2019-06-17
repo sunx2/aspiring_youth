@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ErrorMessage from '../components/ErrorMessage';
 import UserAuth from '../util/UserAuth';
@@ -16,45 +16,28 @@ class Login extends React.Component {
 			password: '',
 			email: ''
 		}
-		//this.base = "http://localhost:8000"
 	}
 
 	login = async () => {
-		/*
-		UserAuth.login({})
-		this.props.history.push('/dashboard');
-		
-		const url = this.base + '/api/auth/authenticate'
-		const data = {
-			email: this.state.email,
-			password: this.state.password	
-		}
-		const resp = await fetch(url, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data),
-		})
-		const json = await resp.json()
-		console.log(json)
-		if(resp.status !== 200) {
-			this.setState({errMsg:json.message})
-		} else {
-			Auth.login(json.data)
+		const result = await AuthApi.login(this.state.email, this.state.password)
+		console.log(result)
+		if (result.success === 'true' || result.success === 'True' || result.success === true) {
+			this.setState({ errMsg: '' })
+			UserAuth.login({})
 			this.props.history.push('/dashboard');
+		} else {
+			if (result.content && result.content.message) this.setState({ errMsg: result.content.message })
 		}
-		*/
 	}
 
 	register = async () => {
 		const result = await AuthApi.register(this.state.name, this.state.email, this.state.password);
 		console.log(result)
-		if(result.Success !== 'False') {
-			this.setState({errMsg:''})
+		if (result.success === 'true' || result.success === 'True' || result.success === true) {
+			this.setState({ errMsg: '' })
 			this.login()
 		} else {
-			if(result.Message) 	this.setState({errMsg:result.Message})
+			if (result.content && result.content.message) this.setState({ errMsg: result.content.message })
 		}
 	}
 
@@ -63,7 +46,8 @@ class Login extends React.Component {
 			showLogin: true,
 			name: '',
 			password: '',
-			email: ''
+			email: '',
+			errMsg: ''
 		})
 	}
 
@@ -72,7 +56,8 @@ class Login extends React.Component {
 			showLogin: false,
 			name: '',
 			password: '',
-			email: ''
+			email: '',
+			errMsg: ''
 		})
 	}
 
