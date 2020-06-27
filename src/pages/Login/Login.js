@@ -1,9 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ErrorMessage from '../components/ErrorMessage';
-import UserAuth from '../util/UserAuth';
-import AuthApi from '../util/network';
+import ErrorMessage from '../../components/ErrorMessage';
+import UserAuth from '../../util/UserAuth';
+import AuthApi from '../../util/network';
 
 class Login extends React.Component {
 
