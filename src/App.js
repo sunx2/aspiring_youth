@@ -1,17 +1,33 @@
 import React from 'react';
-import './App.css';
-import Home from './pages/Home';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
+import './App.css';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import Dashboard from './pages/Dashboard/Dashboard';
 import Header from './components/Header';
 import ProtectedRoute from './components/ProtectedRoute';
+import Particles from 'react-particles-js';
+
+const particlesOptions = {
+  particles: {
+    number: {
+      value: 100,
+      density: {
+        enable: true
+      }
+    }
+  }
+}
+
 
 function App() {
-  document.body.style = 'background: #E8E4E1;';
   return (
     <div className="App">
       <Header></Header>
+      <Particles 
+        className='particles'
+        params={particlesOptions}
+      />
       <Router>
         <Route exact path="/" component={Home}></Route>
         <Route path="/login" component={Login}></Route>
